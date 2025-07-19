@@ -9,12 +9,18 @@ int main(){
     for (int i = 1; i <= n; i++) {
         cin >> p[i] >> c[i];
     }
-    dp[0] = 1;
+    const int INF = 1e9;
+    for (int i = 1; i <= 100000; i++) dp[i] = INF;
+    dp[0] = 0;
     for (int i = 1; i <= n; i++) {
-        for (int j = h; j >= p[i]; j--) {
-            dp[j] = max(dp[j], dp[j - p[i]] + c[i]);
+        for (int j = p[i]; j <= 100000; j++) {
+            dp[j] = min(dp[j], dp[j - p[i]] + c[i]);
         }
     }
-    cout << dp[h] << endl;
+    int ans = INF;
+    for (int i = h; i <= 100000; i++) {
+        ans = min(ans, dp[i]);
+    }
+    cout << ans << endl;
     return 0;
 }
