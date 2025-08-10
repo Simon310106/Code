@@ -13,7 +13,7 @@ int main(){
         a[i] += a[i - 1];
     }
     for (int len = 2; len <= n; len++) {
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= 2 * n; i++) {
             int j = i + len - 1;
             dp[i][j] = 0x3f3f3f3f;
             f[i][j] = -0x3f3f3f3f;
