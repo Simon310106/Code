@@ -22,7 +22,7 @@
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "D:\\TDM-GCC\\bin\\gdb.exe",
             "setupCommands": [
