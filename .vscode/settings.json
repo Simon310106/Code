@@ -90,7 +90,8 @@
         "xloctime": "cpp",
         "xmemory": "cpp",
         "xtr1common": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "print": "cpp"
     },
     "code-runner.executorMap":{
         "cpp":"chcp 65001 "

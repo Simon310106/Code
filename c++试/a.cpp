@@ -1,7 +1,8 @@
-#include <bits/stdc++.h>
+#include <print>
 using namespace std;
 
-int main(){
-	system("pause");
-	return 0;
+int main() {
+    print("Hello, World!");
+    return 0;
 }
+
