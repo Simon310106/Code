@@ -6,29 +6,32 @@ stack<long long> ans;
 int main(){
     string s;
     cin >> s;
+    int now = 0;
     for (int i = 0; i < s.length(); i++) {
-        if (s[i] != '.' && !isdigit(s[i]) && s[i] != '@') {
-            long long a = ans.top() - '0';
+        if (isdigit(s[i])) {
+            now = now * 10 + (s[i] - '0');
+        }
+        else if (s[i] == '.') {
+            ans.push(now);
+            now = 0;
+        }
+        else if (!isdigit(s[i]) && s[i] != '.' && s[i] != '@') {
+            long long b = ans.top();
             ans.pop();
-            long long b = ans.top() - '0';
+            long long a = ans.top();
             ans.pop();
             if (s[i] == '+') {
-                ans.push(b + a);
-            } if (s[i] == '-') {
-                ans.push(b - a);
-            } if (s[i] == '*') {
-                ans.push(b * a);
-            } if (s[i] == '/') {
-                ans.push(b / a);
+                ans.push(a + b);
             }
-        }
-        if (isdigit(s[i])) {
-            long long tmp = 0;
-            while (isdigit(s[i])) {
-                tmp = tmp * 10 + (s[i] - '0');
-                i++;
+            else if (s[i] == '-') {
+                ans.push(a - b);
             }
-            ans.push(tmp);
+            else if (s[i] == '*') {
+                ans.push(a * b);
+            }
+            else if (s[i] == '/') {
+                ans.push(a / b);
+            }
         }
     }
     cout << ans.top() << endl;

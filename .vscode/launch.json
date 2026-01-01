@@ -20,7 +20,7 @@
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "D:\\msys64\\mingw64\\bin",
+            "cwd": "D:\\msys64\\ucrt64\\bin",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

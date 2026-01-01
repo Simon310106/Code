@@ -7,18 +7,17 @@ int d[500005];
 int n, m, s;
 
 void dfs(int x, int father) {
+    d[x] = d[father] + 1;
+    fa[x][0] = father;
+    for (int i = 1; i < 20; i++) {
+        fa[x][i] = fa[fa[x][i - 1]][i - 1];
+    }
     for (int i = 0; i < a[x].size(); i++) {
-        int y = a[x][i];
-        if (y == father) {
+        int v = a[x][i];
+        if (v == father) {
             continue;
-        }
-        d[y] = d[x] + 1;
-        fa[y][0] = x;
-        for (int i = 1; i <= log2(d[y]); i++) {
-            int j = fa[y][i - 1];
-            fa[y][i] = fa[j][i - 1];
-        }
-        dfs(y, x);
+        } 
+        dfs(v, x);
     }
 }
 
@@ -26,17 +25,19 @@ int find(int x, int y) {
     if (d[x] < d[y]) {
         swap(x, y);
     }
-    while (d[x] > d[y]) {
-        int p = log2(d[x] - d[y]);
-        x = fa[x][p];
+    int diff = d[x] - d[y];
+    for (int i = 0; i < 20; i++) {
+        if (diff & (1 << i)) {
+            x = fa[x][i];
+        }
     }
     if (x == y) {
         return x;
     }
-    for (int p = log2(d[x]); p >= 0; p--) {
-        if (fa[x][p] != fa[y][p]) {
-            x = fa[x][p];
-            y = fa[y][p];
+    for (int i = 19; i >= 0; i--) {
+        if (fa[x][i] != fa[y][i]) {
+            x = fa[x][i];
+            y = fa[y][i];
         }
     }
     return fa[x][0];
@@ -44,15 +45,15 @@ int find(int x, int y) {
 
 int main(){
     cin >> n >> m >> s;
-    for (int i = 1; i < n; i++) {
+    while (--n) {
         int x, y;
         cin >> x >> y;
         a[x].push_back(y);
         a[y].push_back(x);
     }
-    fa[s][0] = 0;
-    dfs(s, -1);
-    for (int i = 1; i <= m; i++) {
+    // fa[s][0] = 0;
+    dfs(s, 0);
+    while (m--) {
         int x, y;
         cin >> x >> y;
         cout << find(x, y) << endl;

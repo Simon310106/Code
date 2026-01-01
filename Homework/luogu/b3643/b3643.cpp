@@ -1,32 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> a[100005];
-int b[1005][1005]; 
+int n, m, a[10005][10005]; 
+vector<int> g[10005];
 
 int main(){
-    int n, m;
-    cin >> n >> m;
-    for (int i = 1; i <= m; i++) {
-        int x, y;
-        cin >> x >> y;
-        a[x].push_back(y);
-        a[y].push_back(x);
-        b[x][y] = b[y][x] = 1;
-    }
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            cout << b[i][j] << " ";
-        }
-        cout << endl;
-    }
-    for (int i = 1; i <= n; i++) {
-        cout << a[i].size() << " ";
-        sort(a[i].begin(), a[i].end());
-        for (int j = 0; j < a[i].size(); j++) {
-            cout << a[i][j] << " ";
-        }
-        cout << endl;
-    }
-    return 0;
+	cin >> n >> m;
+	for (int i = 1; i <= m; i++) {
+		int u, v;
+		cin >> u >> v;
+		g[u].push_back(v);
+		g[v].push_back(u);
+		a[u][v] = 1;
+		a[v][u] = 1;
+	}
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= n; j++) {
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+	for (int i = 1; i <= n; i++) {
+		cout << g[i].size() << " ";
+		sort(g[i].begin(), g[i].end());
+		for (int j = 0; j < g[i].size(); j++) {
+			cout << g[i][j] << " ";
+		}
+		cout << endl;
+	}
+	return 0;
 }
+
