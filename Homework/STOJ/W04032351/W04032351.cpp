@@ -2,10 +2,11 @@
 using namespace std;
 
 int n, m;
-bool vis[1005], flag;
+bool vis[1005], f[1005], flag;
 vector<int> g[1005];
 
 void dfs(int x) {
+    f[x] = 1;
     if (flag) return;
     if (vis[x]) {
         flag = 1;
@@ -25,7 +26,11 @@ int main(){
         cin >> u >> v;
         g[u].push_back(v);
     }
-    dfs(1);
+    for (int i = 1; i <= n; i++) {
+        if (g[i].size()) {
+            dfs(i);
+        }
+    }
     if (!flag) cout << "no";
     else cout << "yes";
     return 0;

@@ -3,24 +3,23 @@
 using namespace std;
 
 priority_queue<int, vector<int>, greater<int>> q;
-int ans;
 
 signed main(){
-    int n;
+    int n, ans = 0;
     cin >> n;
-    for (int i = 1; i <= n; i++) {
-        int x;
-        cin >> x;
-        q.push(x);
+    while (n--) {
+        int a;
+        scanf("%lld", &a);
+        q.push(a);
     }
     while (q.size() > 1) {
         int a = q.top();
         q.pop();
         int b = q.top();
         q.pop();
-        ans += a + b;
+        ans += (a + b);
         q.push(a + b);
     }
-    cout << ans << endl;
+    printf("%lld\n", ans);
     return 0;
 }
