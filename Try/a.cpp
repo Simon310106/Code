@@ -1,25 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-long long x[1000010], f[1000010], l[1000010];
-int main()
-{
-    int n;
+
+int d[105][105], n;
+
+int main(){
     cin >> n;
-    for (int i = 1; i <= n; i++)
-        cin >> x[i];
-    f[1] = x[1];
-    for (int i = 2; i <= n; i++)
-        f[i] = max(f[i - 1] + x[i], x[i]); // 算最大子段
-    for (int i = 2; i <= n; i++)
-        f[i] = max(f[i - 1], f[i]); // 算最大子段
-    l[n] = x[n];
-    for (int i = n - 1; i >= 1; i--)
-        l[i] = max(l[i + 1] + x[i], x[i]); // 算最大子段
-    for (int i = n - 1; i >= 1; i--)
-        l[i] = max(l[i + 1], l[i]); // 算最大子段
-    long long ans = f[1] + l[3];
-    for (int i = 3; i < n; i++)
-        ans = max(ans, f[i - 1] + l[i + 1]); // 枚举中间数
-    cout << ans;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cin >> d[i][j];
+        }
+    }
+    for (int k = 1; k <= n; k++) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                d[i][j] |= d[i][k] & d[k][j];
+            }
+        }
+    }
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << d[i][j] << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }
