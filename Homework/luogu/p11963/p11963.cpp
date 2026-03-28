@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
+#define int long long
 using namespace std;
 
 int n, a[500005], minn[500005], maxn[500005], num, mi = -0x3f3f3f3f, ans;
 bool flag = 0;
 
-int main(){
+signed main(){
 	memset(minn, 0x3f, sizeof(minn));
 	memset(maxn, -0x3f, sizeof(maxn));
 	cin >> n;
