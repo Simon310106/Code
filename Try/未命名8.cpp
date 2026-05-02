@@ -1,25 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int a[105];
+priority_queue<int> q;
 
-int main()
-{
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++) {
-		cin >> a[i];
+int main(){
+	for (int i = 1; i <= 10; i++) {
+		q.push(i);
 	}
-	int q;
-	cin >> q;
-	for (int i = 0; i < q; i++) {
-		int l, r;
-		cin >> l >> r;
-		sort(a + l - 1, a + r);
+	for (int i = 1; i <= 10; i++) {
+		cout << q.top() << endl;
+		q.pop();
 	}
-	for (int i = 0; i < n; i++) {
-		cout << a[i] << " ";
-	}
-	
-    return 0;
+	return 0;
 }
