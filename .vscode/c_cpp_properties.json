@@ -14,7 +14,7 @@
             "cStandard": "c23",
             "cppStandard": "c++26",
             "intelliSenseMode": "windows-msvc-x64",
-            "compilerPath": "D:/Program Files/Microsoft Visual Studio/18/Insiders/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
+            "compilerPath": "cl.exe"
         }
     ],
     "version": 4
