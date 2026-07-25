@@ -1,51 +1,25 @@
 #include <bits/stdc++.h>
-#define int long long
 using namespace std;
 
-int n, a[300005], r[300005], ans;
-
-void msort(int s, int t) {
-	if (s == t) {
-		return;
+int check(int x) {
+	while (x % 2 == 0) {
+		x /= 2;
 	}
-	int mid = (s + t) >> 1;
-	msort(mid + 1, t);
-	msort(s, mid);
-	int i = s, j = mid + 1, k = s;
-	while (i <= mid && j <= t) {
-		if (a[i] > a[j]) {
-			r[k] = a[i];
-			k++;
-			i++;
-		}
-		else {
-			ans += mid - i + 1;
-			r[k] = a[j];
-			k++;
-			j++;
-		}
+	while (x % 3 == 0) {
+		x /= 3;
 	}
-	while (i <= mid){
-		r[k] = a[i];
-		k++;
-		i++;
+	while (x % 5 == 0) {
+		x /= 5;
 	}
-	while (j <= t) {
-		r[k] = a[j];
-		k++;
-		j++;
-	}
-	for (int i = s; i <= t; i++) {
-		a[i] = r[i];
-	}
+	return (x == 1 ? 1 : 0);
 }
 
-signed main() {
-	cin >> n;
-	for (int i = 1; i <= n; i++) {
-		cin >> a[i];
+int main(){
+	for (int i = 1, cnt = 1; cnt <= 1690; i++) {
+		if (check(i)) {
+			cout << i << ", ";
+			cnt++;
+		}
 	}
-	msort(1, n);
-	cout << ans;
 	return 0;
-} 
+}

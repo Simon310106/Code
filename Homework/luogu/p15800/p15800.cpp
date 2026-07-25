@@ -17,7 +17,6 @@ signed main(){
     for (int i = n; i >= 1; i--) {
         dp[i] = max(dp[i + 1], dp[max(1ll, b[i]) + i] + a[i]);
     }
-    cout << dp[1];
-
+    cout << dp[1] << endl;
     return 0;
 }
