@@ -95,5 +95,6 @@
     },
     "code-runner.executorMap":{
         "cpp":"chcp 65001 "
-    }
+    },
+    "workbench.browser.experimentalUserTools.enabled": false
 }
