@@ -22,8 +22,8 @@ int main(){
         if (!ans.empty() && c[i].b > ans.back()) {
             ans.push_back(c[i].b);
         }
-        else if (upper_bound(ans.begin(), ans.end(), c[i].b) != ans.end()){
-            ans[upper_bound(ans.begin(), ans.end(), c[i].b) - ans.begin()] = c[i].b;
+        else if (lower_bound(ans.begin(), ans.end(), c[i].b) != ans.end()){
+            ans[lower_bound(ans.begin(), ans.end(), c[i].b) - ans.begin()] = c[i].b;
         }
     }
     cout << ans.size();

@@ -32,16 +32,19 @@ int prefind(string s) {
 }
 
 int main(){
-    ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     int T;
-    cin >> T;
+    scanf("%d", &T);
     while (T--) {
         int n, q;
-        cin >> n >> q;
-        memset(p, 0, sizeof p);
-        memset(trie, 0, sizeof trie);
+        scanf("%d%d", &n, &q);
+        for (int i = 0; i <= idx; i++) {
+            p[i] = 0;
+            for (int j = 0; j <= 62; j++) {
+                trie[i][j] = 0;
+            }
+        }
         idx = 0;
         for (int i = 1; i <= n; i++) {
             string s;
