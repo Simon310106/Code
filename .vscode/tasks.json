@@ -39,8 +39,9 @@
             "options": {
                 "cwd": "D:\\msys64\\ucrt64\\bin",
                 "env": {
-                    "TMP": "C:/Temp",
-                    "TEMP": "C:/Temp"
+                    "TEMP": "D:/tmp",
+                    "TMP": "D:/tmp",
+                    "TMPDIR": "D:/tmp"
                 }
             },
             "problemMatcher": [
